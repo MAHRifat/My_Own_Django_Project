@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    font-family: Arial;
+    border: border-box;
+    text-decoration: none;
+}
+footer{
+   bottom: 0px;;
+   width:100%;
+   height:70px;
+}
+
+
+.foot_panel4{
+    height: 80px;
+    background-color: #f0f5f5;
+}
+
+.pages{
+    text-align: center;
+    padding-top: 25px;
+}
+.pages a{
+    font-size: .7rem;
+    color: black;
+    padding-right: 4px;
+}
+
+.pages a:hover{
+    text-decoration: underline;
+}
+
+.copyright{
+    font-size: .7rem;
+    text-align: center;
+    padding-top: 4px;
+}

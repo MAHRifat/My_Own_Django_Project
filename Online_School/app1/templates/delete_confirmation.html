@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="width : 50% ; margin : auto">
+   <h1> Are you sure that you want to delete the Course? </h1>
+    <form method="post" >   
+         {% csrf_token %} 
+        <input type="submit" value="Confirm" class = "bg-success text-white">
+    </form>
+</div>
+{% endblock content %}

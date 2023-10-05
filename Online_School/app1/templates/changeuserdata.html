@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+ {% block content %}
+ {% if messages %}
+ {% for m in messages %}
+ <small class = 'bg-success p-3 text-white'> {{m}} </small>
+ {% endfor %}
+{% endif %}
+<h1 style="width:50% ; margin:auto">Change Your Data</h1>
+<form method="post" action="" style="width : 50% ; margin : auto;" novalidate>
+ {% csrf_token %}
+ {{form|crispy}}
+ <input type="submit" value="Save Change" class = "bg-primary text-white" style="border : 0px solid black">
+ <br>
+</form>
+ {% endblock content %}

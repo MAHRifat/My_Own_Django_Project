@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="carousel-caption d-none d-md-block bg-white" style= " width:23% ; height: 26% ; color: black ; text-align:center ; position: absolute;">
+          <h5>Learning that gets you</h5>
+          <p>Skills for your present (and your future).<br> Get started with us.</p>
+        </div>
+        <img src="{% static 'images/1.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item ">
+        <div class="carousel-caption d-none d-md-block bg-white" style= " width:23% ; height: 26% ; color: black ; text-align:center ; position: absolute;">
+          <h5>Build ready-for-anything teams</h5>
+          <p>See why leading organizations choose to learn <br> with OurSchool Business.</p>
+        </div>
+        <img src="{% static 'images/2.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<div class="row">
+    <aside class="col-md-1" >
+  <article class="filter-group">
+		<header class="card-header" style="border : 2px solid black;">
+			<a href="{% url 'home' %}" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="" style="text-decoration: none; color: black">
+				<h6 class="title">Categories</h6>
+			</a>
+      {% for i in categories %}
+						<li><a href="{% url 'Course_filter' category_slug=i.slug %}">{{i.category_name}}  </a></li>					
+					{% endfor%}
+		</header>
+		</div>
+	</article> <!-- filter-group  .// -->
+</div>
+
+  <div style="width : 80% ; margin : auto; text-align: center">
+      <h1>Courses</h1>
+      <p style="text-align: left">{{data | length}} Courses found</p>
+      {% if data %}
+      <div style="display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;">
+      {% for i in data %}
+      <div class="card col-md-3" style="width: 31%; height: 390px; margin-left : 0px; margin-bottom: 25px">
+          <h3 class="card-title">{{i.course_name}}</h3>
+          <img src="{{i.course_img.url}}" style="height: 200px; 
+          background-size: cover;
+          margin: 15px;
+          border-radius: 2px; ">
+          <div class="card-body"> 
+            <h5 class="card-title">{{i.dept}}</h5>     
+            <p class="card-text">{{i.course_description}}</p>
+          </div>
+          <a href="{% url 'course_details' i.id %}">more</a>
+      </div>
+          {% endfor %}
+      </div>
+        {% else %}
+        <h3>  No Course available </h3>
+        {% endif %}
+
+        <nav class="mt-4" aria-label="Page navigation sample">
+
+          <ul class="pagination">
+          {% if data.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{data.previous_page_number}}">Previous</a></li>
+          {% else %}
+          <li class="page-item disabled"><a class="page-link" >Previous</a></li>
+          {% endif%}
+        
+          {% for i in data.paginator.page_range %}
+            <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+          {% endfor %}
+            
+        
+          {% if data.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{data.next_page_number}}">Next</a></li>
+          {% else %}
+          <li class="page-item disabled"><a class="page-link" >Next</a></li>
+          {% endif%}
+          </ul>
+        </nav>
+  
+  </div>
+
+  
+
+{% endblock content %}

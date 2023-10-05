@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div style="width : 50% ; margin : auto">
+    <form method="post" enctype="multipart/form-data">   
+        {% csrf_token %}
+        <h1> Upload your Course</h1>
+        {{form|crispy}}
+        <input type="submit" value="submit" class = "bg-success text-white">
+    </form>
+</div>
+{% endblock content %}

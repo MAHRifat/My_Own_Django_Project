@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="width : 80% ; margin : auto; text-align: center">
+    <h1>Courses Details</h1>
+    <div style="display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; height: 80%;" >
+        <div style="width: 70%;  margin-left : 0px; margin-bottom: 25px">
+            <h3 class="card-title">{{i.course_name}}</h3>
+            <video width="100%" height="100%" controls poster="{{i.course_img.url}}">
+                <source src="{{i.course_video.url}}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</div>
+{% endblock content %}
