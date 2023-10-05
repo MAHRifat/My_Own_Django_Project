@@ -120,12 +120,12 @@ def User_login(request):
                 user = authenticate(username = name, password = userpass)   #check kortechi user database e ache ki na
                 if user is not None:
                     login(request, user)
-                    return redirect('login_home')
+                    return redirect('home')
         else:
             form = AuthenticationForm()
         return render(request, 'login.html', {'form' : form})
     else:
-        return redirect('login_home')
+        return redirect('home')
 
 # home page
 def login_home(request):
