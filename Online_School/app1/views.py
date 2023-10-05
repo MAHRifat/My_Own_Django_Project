@@ -80,7 +80,7 @@ class CourseUpdateView(UpdateView):
     model = CoursesStoreModel
     template_name = 'course_store.html'
     form_class = CourseStoreForm
-    success_url = reverse_lazy('login_home')
+    success_url = reverse_lazy('home')
 
 # delete course
 class DeleteCourseView(DeleteView):
