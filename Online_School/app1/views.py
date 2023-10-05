@@ -24,7 +24,7 @@ def ChourseForm(request):
             task_list = form.save(commit=False)
             task_list.teacher_id = request.user
             task_list.save()
-            return redirect('login_home')
+            return redirect('home')
     else:
         form = CourseStoreForm(prefix='form')
 
