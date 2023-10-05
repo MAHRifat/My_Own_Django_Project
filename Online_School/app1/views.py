@@ -86,7 +86,7 @@ class CourseUpdateView(UpdateView):
 class DeleteCourseView(DeleteView):
     model = CoursesStoreModel
     template_name = 'delete_confirmation.html'
-    success_url = reverse_lazy('login_home')
+    success_url = reverse_lazy('home')
 
 # Show course Details
 class CourseDetailView(DetailView):
